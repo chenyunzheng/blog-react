@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Route } from 'react-router-dom';
 import PostList from './../containers/PostList';
-import Post from './../components/Post';
+import Post from '../containers/Post';
 
 class Home extends Component {
     constructor(props) {
