@@ -7,13 +7,25 @@ import Post from '../containers/Post';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  
+            userId: sessionStorage.getItem("userId"),
+            username: sessionStorage.getItem("username")
+        }
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
+    handleLogout(){
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("username");
+        this.setState({
+            userId: null,
+            username: null
+        })
+    }
 
     render() { 
         const {match, location} = this.props;
-        const {username} = this.state;
+        const {userId, username} = this.state;
         return ( 
             <div>
                 <Header 
@@ -25,13 +37,13 @@ class Home extends Component {
                 <Route 
                     exact
                     path={match.url}
-                    render={props => <PostList username={username} {...props} />} 
+                    render={props => <PostList username={username} userId={userId} {...props} />} 
                 />
                 {/* 帖子详情路由配置 */}
                 <Route
                     exact
                     path={`${match.url}/:id`}
-                    render={props => <Post username={username} {...props} /> }
+                    render={props => <Post username={username} userId={userId} {...props} /> }
                 />
             </div>
          );

@@ -64,7 +64,7 @@ class Login extends Component {
         const {from} = this.props.location.state || {from: {pathname: "/"}};
         const {redirectToReferrer} = this.state;
         //使用Redirect重定向页面
-        if(redirectToReferrer){
+      if(redirectToReferrer){
             return <Redirect to={from} />
         }
         return ( 

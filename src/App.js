@@ -1,7 +1,6 @@
 import React from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
-import { get } from './utils/request';
 import Home from './pages/Home';
 import Login from './pages/Login';
 

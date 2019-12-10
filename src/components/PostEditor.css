@@ -1,0 +1,15 @@
+.postEditor input{
+    width: 100%;
+    margin: 10px auto;
+    line-height: 1.5em;
+}
+
+.postEditor textarea{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.postEditor button{
+    margin: 0px 20px;
+}
