@@ -2,7 +2,9 @@
 const easyMockUrl = "http://localhost:7300/mock/";
 const projectId = '5dee9f1c127eb00273529f0b';
 const projectName = 'blog';
-const backendBaseUrl = easyMockUrl + projectId + '/' + projectName;
+let backendBaseUrl = easyMockUrl + projectId + '/' + projectName;
+//use local json-server due to easy-mock currently can't do data relationship
+backendBaseUrl = "http://localhost:5000";
 
 function encodeQuery(query) {
     return encodeURIComponent(JSON.stringify(query));
@@ -14,10 +16,12 @@ export default {
     postList: () => backendBaseUrl + "/posts",
     createPost: () => backendBaseUrl + "/post",
     getPostById: (id) => {
-        return backendBaseUrl + "/post?id=" + id;
+        return backendBaseUrl + "/posts?id=" + id;
     },
     updatePost: (id) => {
         return backendBaseUrl + "/post?id=" + id;
     },
     createComment: () => backendBaseUrl + "/comment",
+    getComments: (postId) => backendBaseUrl + "/comments?_expand=post&postId=" + postId,
+
 }

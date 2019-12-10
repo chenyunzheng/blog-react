@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { formatDate } from "./../utils/date";
 import like from "../images/like.png";
+import './PostItem.css';
 
 function PostItem(props) {
-  const { post } = this.props;
+  const { post } = props;
   return (
     <li className="postItem">
       <div className="title">{post.title}</div>
@@ -11,7 +12,7 @@ function PostItem(props) {
         创建人：<span>{post.author.username}</span>
       </div>
       <div>
-        更新时间：<span>{formatDate(post.updateAt)}</span>
+        更新时间：<span>{formatDate(post.updatedAt)}</span>
       </div>
       <div className="like">
         <span>

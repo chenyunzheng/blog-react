@@ -14,7 +14,7 @@ class PostsView extends Component {
                 {
                     posts.map(item => (
                         // 使用Link组件包裹PostItem
-                        <Link key={item.id} to={`/post/${item.id}`}>
+                        <Link key={item.id} to={`/posts/${item.id}`}>
                             <PostItem post={item} />
                         </Link>)
                     )

@@ -8,6 +8,7 @@ class CommentsView extends Component {
   }
   render() {
     const { comments } = this.props;
+    console.log(comments)
     return (
       <ul className="commentsView">
         {comments.map(item => 
@@ -15,7 +16,7 @@ class CommentsView extends Component {
             <li key={item.id}>
               <div>{item.content}</div>
               <div className="sub">
-                <span>{item.author.username}</span>
+                <span>{item.post.author.username}</span>
                 <span>.</span>
                 <span>{formatDate(item.updateAt)}</span>
               </div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { get, put, post } from '../utils/request';
 import url from '../utils/url';
 import PostEditor from '../components/PostEditor';
-import PostsView from './PostsView';
 import CommentList from './CommentList';
+import PostDetails from './../components/PostDetails';
 
 class Post extends Component {
     constructor(props) {
@@ -92,22 +92,22 @@ class Post extends Component {
 
     render() { 
         const {post, comments, editing} = this.state;
-        const {userId} = this.props;
+        const {username} = this.props;
         if (Object.keys(post).length === 0) {
             return null;
         }
-        const editable = userId === post.author.id;
+        const editable = username === post.author.username;
         return ( 
             <div className="post">
                 {
                     editing ? (
                         <PostEditor post={post} onSave={this.handlePostSave} onCancel={this.handlePostCancel} />
                     ) : (
-                        // 改由PostView展示
-                        <PostsView post={post} editable={editable} onEditClick={this.handleEditClick} />
+                        // 改由PostDetails展示
+                        <PostDetails post={post} editable={editable} onEditClick={this.handleEditClick} />
                     )
                 }
-                <CommentList comments={comments} editable={Boolean(userId)} onSubmit={this.handleCommentSubmit} /> 
+                <CommentList comments={comments} editable={editable} onSubmit={this.handleCommentSubmit} /> 
             </div>
          );
     }

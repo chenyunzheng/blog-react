@@ -1,0 +1,36 @@
+.postDetails .mark {
+    color: grey;
+    margin-bottom: 20px; 
+}
+
+.postDetails .mark span {
+    margin-right: 5px;
+}
+
+.postDetails .mark .author {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #009a61;
+}
+
+.postDetails .content {
+    color: grey;
+    margin-bottom: 20px;
+}
+  
+.postDetails .vote {
+    height: 30px; 
+    margin-bottom: 20px; 
+}
+  
+.postDetails .vote span {
+    vertical-align: middle;
+    display: table-cell;
+    width: 30px;
+    height: 30px;
+}
+  
+.postDetails .vote img {
+    height: 30px; 
+    width: 30px;
+}
