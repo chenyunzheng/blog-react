@@ -20,6 +20,7 @@ class Post extends Component {
         this.handlePostCancel = this.handlePostCancel.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+        this.handleVote = this.handleVote.bind(this);
     }
 
     componentDidMount(){
@@ -79,14 +80,29 @@ class Post extends Component {
 
     handleCommentSubmit(content){
         const postId = this.props.match.params.id;
+        const username = this.props.username;
         const comment = {
-            author: this.props.userId,
-            post: postId,
-            content: content
+            postId: postId,
+            content: content,
+            author: username,
+            createdAt: formatDate(new Date().toString())
         };
         post(url.createComment(), comment).then(data => {
             if (!data.error) {
                 this.refreshComments();
+            }
+        })
+    }
+
+    handleVote(){
+        const {post} = this.state;
+        const newPost = {...post, vote: post.vote + 1};
+        this.setState({
+            post: newPost
+        })
+        put(url.addVote(post.id), newPost).then(data => {
+            if (data.error) {
+                alert("vote error")
             }
         })
     }
@@ -105,10 +121,10 @@ class Post extends Component {
                         <PostEditor post={post} onSave={this.handlePostSave} onCancel={this.handlePostCancel} />
                     ) : (
                         // 改由PostDetails展示
-                        <PostDetails post={post} editable={editable} onEditClick={this.handleEditClick} />
+                        <PostDetails post={post} editable={editable} onEditClick={this.handleEditClick} onVote={this.handleVote} />
                     )
                 }
-                <CommentList comments={comments} editable={editable} onSubmit={this.handleCommentSubmit} /> 
+                <CommentList comments={comments} editable={Boolean(username)} onSubmit={this.handleCommentSubmit} /> 
             </div>
          );
     }

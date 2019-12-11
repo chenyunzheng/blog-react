@@ -75,7 +75,7 @@ class PostList extends Component {
                     {userId ? <button onClick={this.handleNewPost}>发帖</button> : null}
                 </div>
                 {/* 若创建新帖子，显示PostEditor组件 */}
-                {this.state.newPost ? <PostEditor onSave={this.handleSave} onCancle={this.handleCancel}/> : null}
+                {this.state.newPost ? <PostEditor onSave={this.handleSave} onCancel={this.handleCancel}/> : null}
                 {/* 显示帖子列表 */}
                 <PostsView posts={this.state.posts}/> 
             </div>

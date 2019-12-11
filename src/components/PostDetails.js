@@ -1,10 +1,10 @@
-import React from "react";
-import { formatDate } from "./../utils/date";
+import React from 'react';
+import { formatDate } from './../utils/date';
 import like from '../images/like.png';
 import './PostDetails.css'
 
 function PostDetails(props) {
-  const { post, editable, onEditClick } = props;
+  const { post, editable, onEditClick, onVote } = props;
   return (
     <div className="postDetails">
       <div>
@@ -22,7 +22,7 @@ function PostDetails(props) {
         <div className="content">{post.content}</div>
       </div>
       <div className="vote">
-        <span>
+        <span onClick={onVote}>
           <img alt="vote" src={like} />
         </span>
         <span>{post.vote}</span>
@@ -30,5 +30,5 @@ function PostDetails(props) {
     </div>
   );
 }
-
+ 
 export default PostDetails;

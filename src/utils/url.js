@@ -25,4 +25,5 @@ export default {
     },
     getComments: (postId) => backendBaseUrl + "/comments?_expand=post&postId=" + postId,
     getLatestPostId: () => backendBaseUrl + "/posts?_sort=id&_order=desc&_limit=1",
+    addVote: (postId) => backendBaseUrl + "/posts/" + postId,
 }

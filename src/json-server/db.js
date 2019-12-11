@@ -32,6 +32,8 @@ module.exports = () => {
             return {
                 id: n,
                 content: faker.lorem.sentences(3),
+                author: faker.name.findName(),
+                createdAt: formatDate(faker.date.future()),
                 postId: n
             }
         }),
