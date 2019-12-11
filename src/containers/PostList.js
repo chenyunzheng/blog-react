@@ -4,6 +4,7 @@ import url from '../utils/url';
 import PostEditor from './../components/PostEditor';
 import PostsView from './PostsView';
 import './PostList.css'
+import { formatDate } from './../utils/date';
 
 class PostList extends Component {
     constructor(props) {
@@ -42,13 +43,17 @@ class PostList extends Component {
 
     handleSave(data){
         const postData = {
-            ...data,
-            author: this.props.userId,
-            vote: 0
+            title: data.title,
+            content: data.content,
+            author: {
+                username: this.props.username
+            },
+            vote: 0,
+            updatedAt: formatDate(new Date().toString())
         };
-        post(url.createPost(), postData).then(data => {
-            if (!data.error) {
-                //post保存成功，刷新列表
+        post(url.createPost(), postData).then(resdata => {
+            if (!resdata.error) {
+                //post保存成功，再刷新列表
                 this.refreshPostList();
             }
         })

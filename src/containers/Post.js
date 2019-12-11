@@ -4,6 +4,7 @@ import url from '../utils/url';
 import PostEditor from '../components/PostEditor';
 import CommentList from './CommentList';
 import PostDetails from './../components/PostDetails';
+import { formatDate } from './../utils/date';
 
 class Post extends Component {
     constructor(props) {
@@ -53,9 +54,9 @@ class Post extends Component {
     // 复用PostEditor，保存更改
     handlePostSave(data){
         const postId = this.props.match.params.id;
-        put(url.updatePost(postId), data).then(data => {
-            if (!data.error) {
-                const newPost = {...data, author: this.state.post.author}
+        put(url.updatePost(postId), data).then(resdata => {
+            if (!resdata.error) {
+                const newPost = {...data, author: this.state.post.author, updatedAt: formatDate(new Date().toString())}
                 this.setState({
                     post: newPost,
                     editing: false

@@ -14,14 +14,15 @@ export default {
     //登录
     login: () => backendBaseUrl + "/login",
     postList: () => backendBaseUrl + "/posts",
-    createPost: () => backendBaseUrl + "/post",
+    createPost: () => backendBaseUrl + "/posts",
+    createComment: () => backendBaseUrl + "/comments",
+    addComment: (postId) => backendBaseUrl + "/posts/" + postId + "/comments",
     getPostById: (id) => {
         return backendBaseUrl + "/posts?id=" + id;
     },
     updatePost: (id) => {
-        return backendBaseUrl + "/post?id=" + id;
+        return backendBaseUrl + "/posts?id=" + id;
     },
-    createComment: () => backendBaseUrl + "/comment",
     getComments: (postId) => backendBaseUrl + "/comments?_expand=post&postId=" + postId,
-
+    getLatestPostId: () => backendBaseUrl + "/posts?_sort=id&_order=desc&_limit=1",
 }

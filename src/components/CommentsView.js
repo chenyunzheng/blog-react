@@ -18,7 +18,7 @@ class CommentsView extends Component {
               <div className="sub">
                 <span>{item.post.author.username}</span>
                 <span>.</span>
-                <span>{formatDate(item.updateAt)}</span>
+                <span>{formatDate(item.post.updatedAt)}</span>
               </div>
             </li>
           )

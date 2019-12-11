@@ -10,7 +10,7 @@ class PostEditor extends Component {
             content: (post && post.content) || ""
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleCancleClick = this.handleCancleClick.bind(this);
+        this.handleCancelClick = this.handleCancelClick.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
     }
 
@@ -29,8 +29,8 @@ class PostEditor extends Component {
         }
     }
 
-    handleCancleClick(){
-        this.props.onCancle();
+    handleCancelClick(){
+        this.props.onCancel();
     }
 
     handleSaveClick(){
@@ -46,7 +46,7 @@ class PostEditor extends Component {
             <div className="postEditor">
                 <input type="text" name="title" placeholder="标题" value={this.state.title} onChange={this.handleChange} />
                 <textarea name="content" placeholder="内容" value={this.state.content} onChange={this.handleChange} />
-                <button onClick={this.handleCancleClick}>取消</button>
+                <button onClick={this.handleCancelClick}>取消</button>
                 <button onClick={this.handleSaveClick}>保存</button>
             </div>
          );
